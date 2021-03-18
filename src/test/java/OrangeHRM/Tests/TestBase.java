@@ -61,10 +61,9 @@ public class TestBase {
             url=ConfigurationReader.get(env+"_url");
         }
         //if it is not null, choose env based on value
-        driver = Driver.get();
-        driver.manage().window().maximize();
-        actions = new Actions(driver);
-        driver.get(url);
+
+        Driver.get().manage().window().maximize();
+        Driver.get().get(url);
 
     }
 
