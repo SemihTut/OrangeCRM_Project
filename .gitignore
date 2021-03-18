@@ -7,3 +7,7 @@
 *.iml
 out
 gen
+pom.xml
+src/main/
+target/generated-test-sources/
+test-output/
