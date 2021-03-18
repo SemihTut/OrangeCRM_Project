@@ -11,3 +11,4 @@ pom.xml
 src/main/
 target/generated-test-sources/
 test-output/
+src/test/java/OrangeHRM/Utilities/
