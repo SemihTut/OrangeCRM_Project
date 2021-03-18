@@ -1,6 +1,7 @@
 package OrangeHRM.Pages;
 
 import OrangeHRM.Utilities.BrowserUtils;
+import OrangeHRM.Utilities.ConfigurationReader;
 import OrangeHRM.Utilities.Driver;
 import org.openqa.selenium.By;
 

@@ -15,10 +15,9 @@ public class LoginPagePositiveTest extends TestBase{
         new LoginPage()
                 .enterUserName(ConfigurationReader.get("username"))
                 .enterPassword(ConfigurationReader.get("password"))
-                .clickLoginBtn();
-        //logout
-        new MainPage().logOut();
-        Assert.assertTrue(Driver.get().getTitle().equals("OrangeHRM"));
+                .clickLoginBtn().logOut();
+
+        Assert.assertEquals(Driver.get().getTitle(), "OrangeHRM");
     }
 
     @Test
@@ -26,9 +25,8 @@ public class LoginPagePositiveTest extends TestBase{
         new LoginPage()
                 .enterUserName(ConfigurationReader.get("username"))
                 .enterPassword(ConfigurationReader.get("password"))
-                .clickLoginBtn();
-        //logout
-        new MainPage().logOut();
-        Assert.assertTrue(Driver.get().getTitle().equals("OrangeHRM"));
+                .clickLoginBtn().logOut();
+
+        Assert.assertEquals(Driver.get().getTitle(), "OrangeHRM");
     }
 }

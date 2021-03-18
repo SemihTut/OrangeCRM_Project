@@ -1,0 +1,7 @@
+package OrangeHRM.Enums;
+
+public enum Urls {
+
+    URL,URL_DEV;
+
+}

@@ -6,6 +6,7 @@ import OrangeHRM.Utilities.Driver;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.google.common.base.Enums;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +14,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+enum Urls {
+
+    URL,URL_DEV;
+
+}
 
 public class TestBase {
 
@@ -40,7 +48,7 @@ public class TestBase {
         report.attachReporter(htmlReporter);
 
         //title in report
-        htmlReporter.config().setReportName("Vytrack Smoke Test");
+        htmlReporter.config().setReportName("Orange HRM Project");
 
         //set environment information
         report.setSystemInfo("Environment","QA");
@@ -52,11 +60,11 @@ public class TestBase {
     @BeforeMethod
     @Parameters("env")
     public void setUpMethod(@Optional String env){
-        System.out.println("env = " + env);
-
+        Map<String, String> propertiesMAP = ConfigurationReader.getPropertiesMAP();
         //if env variable is null use default url
         if(env==null){
-            url=ConfigurationReader.get("url");
+            Urls urls = Urls.URL; //URL
+            url=propertiesMAP.get(urls.name().toLowerCase());
         }else{
             url=ConfigurationReader.get(env+"_url");
         }
