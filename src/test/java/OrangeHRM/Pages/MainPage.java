@@ -26,4 +26,6 @@ public final class MainPage {
     public LoginPage logOut(){
         return clickMyProfile().clickLogOutBtn();
     }
+
+
 }

@@ -27,4 +27,7 @@ public final class LoginPage {
         return new MainPage();
     }
 
+    public By login(){
+        return loginBtn;
+    }
 }
