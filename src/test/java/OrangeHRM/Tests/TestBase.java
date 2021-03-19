@@ -79,22 +79,27 @@ public class TestBase {
     @AfterMethod
     public void afterMethod(ITestResult result) throws InterruptedException, IOException {
         //if test failed
-        if (result.getStatus()==ITestResult.FAILURE){
-            //record the name fo failed test case
-            extentLogger.fail(result.getName());
+        try {
+            if (result.getStatus()==ITestResult.FAILURE){
+                //record the name fo failed test case
+                extentLogger.fail(result.getName());
 
-            //take the screenshot and return location of screenshot
-            String screenShotPath = BrowserUtils.getScreenshot(result.getName());
-            //add your screen shot to your report
-            extentLogger.addScreenCaptureFromPath(screenShotPath);
+                //take the screenshot and return location of screenshot
+                String screenShotPath = BrowserUtils.getScreenshot(result.getName());
+                //add your screen shot to your report
+                extentLogger.addScreenCaptureFromPath(screenShotPath);
 
-            //capture the exception and put inside the report
-            extentLogger.fail(result.getThrowable());
+                //capture the exception and put inside the report
+                extentLogger.fail(result.getThrowable());
 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         //close driver
         Thread.sleep(2000);
         Driver.closeDriver();
+
     }
 
     @AfterTest

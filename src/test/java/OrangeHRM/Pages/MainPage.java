@@ -8,6 +8,7 @@ public final class MainPage {
 
     public final By myProfile = By.id("welcome");
     public final By logOutBtn = By.linkText("Logout");
+    public final By aboutLink = By.id("aboutDisplayLink");
 
     public MainPage clickMyProfile(){
         BrowserUtils.waitForClickablility(myProfile,5);
