@@ -79,7 +79,7 @@ public class TestBase {
     @AfterMethod
     public void afterMethod(ITestResult result) throws InterruptedException, IOException {
         //if test failed
-        try {
+    /*    try {
             if (result.getStatus()==ITestResult.FAILURE){
                 //record the name fo failed test case
                 extentLogger.fail(result.getName());
@@ -95,7 +95,7 @@ public class TestBase {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         //close driver
         Thread.sleep(2000);
         Driver.closeDriver();

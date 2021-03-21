@@ -13,31 +13,30 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginPagePositiveTest extends TestBase{
+public class LoginPagePositiveTest extends TestBase {
 
+    int count = 1;
+    ExcelUtil loginDatas = new ExcelUtil("src/test/resources/dataProvider.xlsx", "Sheet1");
     @Test(dataProvider = "LoginData")
-    public void test1(String username, String password) throws InterruptedException {
-        try {
+    public void test1(String username, String password, String result) throws InterruptedException {
+
             new LoginPage()
                     .enterUserName(username)
                     .enterPassword(password)
-                    .clickLoginBtn().clickMyProfile();
-      /*  Thread.sleep(1000);
-        BrowserUtils.clickNewTab(new MainPage().aboutLink);
-        Thread.sleep(2000);
-        //String chor = Keys.chord(Keys.CONTROL,Keys.PAGE_DOWN);
-        BrowserUtils.goToNewTab(new MainPage().aboutLink);*/
-            Assert.assertEquals(Driver.get().getTitle(), "OrangeHRM");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                    .clickLoginBtn();
+
+            BrowserUtils.waitForVisibility(new MainPage().myProfile, 5);
+            if(Driver.get().findElement(new MainPage().myProfile).isDisplayed()){
+                loginDatas.setCellData("YES", "Result", count);
+            }else{
+                loginDatas.setCellData("NO", "Result", count);
+            }
+        System.out.println("count++ = " + count++);
     }
 
 
     @DataProvider(name = "LoginData", parallel = true)
-    public Object[][] loginData(){
-        ExcelUtil loginDatas = new ExcelUtil("src/test/resources/dataProvider.xlsx","Sheet1");
-        loginDatas.getColumnsNames().forEach(System.out::println);
+    public Object[][] loginData() {
         return loginDatas.getDataArrayWithoutFirstRow();
 
     }
