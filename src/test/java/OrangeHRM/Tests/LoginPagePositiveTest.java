@@ -41,3 +41,11 @@ public class LoginPagePositiveTest extends TestBase {
 
     }
 }
+
+/*
+ @DataProvider(name = "LoginData", parallel = true)
+    public Object[][] loginData() {
+        return loginDatas.getDataArrayWithoutFirstRow();
+
+    }
+ */
