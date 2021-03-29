@@ -60,7 +60,7 @@ public class TestBase {
     @BeforeMethod
     @Parameters("env")
     public void setUpMethod(@Optional String env){
-        Map<String, String> propertiesMAP = ConfigurationReader.getPropertiesMAP();
+      /*  Map<String, String> propertiesMAP = ConfigurationReader.getPropertiesMAP();
         //if env variable is null use default url
         if(env==null){
             Urls urls = Urls.URL; //URL
@@ -68,10 +68,10 @@ public class TestBase {
         }else{
             url=ConfigurationReader.get(env+"_url");
         }
-        //if it is not null, choose env based on value
+        //if it is not null, choose env based on value*/
 
         Driver.get().manage().window().maximize();
-        Driver.get().get(url);
+        Driver.get().get(ConfigurationReader.get("url"));
 
     }
 
