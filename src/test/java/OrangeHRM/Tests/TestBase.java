@@ -98,6 +98,12 @@ public class TestBase {
         }*/
         //close driver
         Thread.sleep(2000);
+
+        //quit all the browsers
+        //quit all the browsers//quit all the browsers
+        //quit all the browsers
+
+
         Driver.closeDriver();
 
     }
